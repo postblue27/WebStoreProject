@@ -1,0 +1,7 @@
+﻿@model web_store.ViewModels.ProductsListViewModel
+
+<h1 class="text-center">@ViewBag.CurrentCategory</h1>
+    @foreach (var product in Model.Products)
+    {
+        @await Html.PartialAsync("ProductOverviewSummary", product)
+    }

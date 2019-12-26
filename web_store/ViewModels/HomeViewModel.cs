@@ -1,0 +1,13 @@
+using web_store.Models;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+
+namespace web_store.ViewModels
+{
+    public class HomeViewModel
+    {
+        public IEnumerable<Product> SuggestedProducts { get; set; }
+    }
+}

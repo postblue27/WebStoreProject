@@ -1,0 +1,56 @@
+﻿@model IEnumerable<web_store.Models.OrderDetail>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_CrudLayout.cshtml";
+}
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Amount)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Product)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Order.OrderId)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+@{ decimal totalPrice = 0;}
+@foreach (var item in Model)
+{
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Amount)
+            </td>
+            <td>
+                @{var Total = item.Price * item.Amount;}
+                @Total
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Product.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Order.OrderId)
+            </td>
+            <td>
+                @{totalPrice += Total;}
+
+            </td>
+        </tr>
+}
+        <tr>
+            <th>
+                Total price: @totalPrice
+            </th>
+        </tr>
+    </tbody>
+</table>
